@@ -4,6 +4,7 @@ public class Greeting {
 
     private long id;
     private String content;
+    private String author;
 
     public long getId() {
         return id;
@@ -21,4 +22,11 @@ public class Greeting {
         this.content = content;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }
