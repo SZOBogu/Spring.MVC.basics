@@ -1,4 +1,4 @@
-!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Getting Started: Handling Form Submission</title>
@@ -6,9 +6,21 @@
 </head>
 <body>
 <h1>Result</h1>
-<p th:text="'id: ' + ${greeting.id}" />
-<p th:text="'content: ' + ${greeting.content}" />
-<p th:text="'author: ' + ${greeting.author}" />
+<table>
+    <tr>
+        <td><label>ID: </label></td>
+        <td><p th:text="${greeting.id}" /></td>
+    </tr>
+    <tr>
+        <td><label>Content: </label></td>
+        <td><p th:text="${greeting.content}" /></td>
+    </tr>
+    <tr>
+        <td><label>Author: </label></td>
+        <td><p th:text="${greeting.author}" /></td>
+    </tr>
+</table>
+
 <a href="/greeting">Submit another message</a>
 </body>
 </html>
