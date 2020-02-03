@@ -29,4 +29,11 @@ public class Greeting {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public Greeting doSomething(){
+        this.setAuthor(this.getAuthor().toUpperCase());
+        this.setContent("Treść posta:\n" + this.getContent() + " gitara bęc.");
+        this.setId(this.getId() + 1);
+        return this;
+    }
 }

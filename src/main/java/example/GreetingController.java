@@ -3,7 +3,10 @@ package example;
 import example.Greeting;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,26 +14,21 @@ import javax.servlet.http.HttpServletRequest;
 public class GreetingController {
 
     @GetMapping("/greeting")
-    public String greetingForm(Model model) {
-        model.addAttribute("greeting", new Greeting());
-        return "greeting";
+    public ModelAndView greetingForm(Model model) {
+        return new ModelAndView("greeting", "greeting", new Greeting());
     }
 
-    @PostMapping("/greeting")
-    public String greetingSubmit(@ModelAttribute Greeting greeting) {
+    @PostMapping("/post")
+    public String greetingSubmit(@ModelAttribute Greeting greeting, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        greeting.setId(greeting.getId() + 1);
+        greeting.setContent("Ogłasza się co następuje:\n" + greeting.getContent() + " gitara bęc");
+        greeting.setAuthor(greeting.getAuthor().toUpperCase());
+
+        model.addAttribute("greeting", greeting);
+
         return "result";
     }
 }
-//    @GetMapping("/greeting")
-//    public String doSomethingDumb(HttpServletRequest request, Model model){
-//        int id = request.getParameter("id").hashCode();
-//        String content = request.getParameter("content") + "length: " + request.getParameter("content").length();
-//        String author = request.getParameter("author").toUpperCase();
-//
-//        model.addAttribute("id");
-//        model.addAttribute("content");
-//        model.addAttribute("author");
-//
-//        return "result";
-//    }
-//}
