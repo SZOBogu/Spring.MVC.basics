@@ -12,4 +12,8 @@ public class GreetingDatabase {
     public ArrayList<Greeting> getDb() {
         return db;
     }
+
+    public Greeting getGreeting(int index){
+        return this.db.get(index);
+    }
 }
