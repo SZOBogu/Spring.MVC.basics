@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
+@RequestMapping("/greeting")
 public class GreetingController {
 
     @GetMapping("/greeting")
