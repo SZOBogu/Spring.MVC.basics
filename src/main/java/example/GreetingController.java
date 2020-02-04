@@ -32,10 +32,10 @@ public class GreetingController {
         return "result";
     }
 
-    @RequestMapping("/post2")
+    @PostMapping("/post2")
     public String processForm(HttpServletRequest request, Model model){
         long id = Long.parseLong(request.getParameter("id"));
-        String content = request.getParameter("content") + "pis joł";
+        String content = request.getParameter("content") + " pis joł";
         String author = request.getParameter("author").toUpperCase();
 
         Greeting greeting = new Greeting();
@@ -43,6 +43,22 @@ public class GreetingController {
         greeting.setId(id);
         greeting.setContent(content);
         greeting.setAuthor(author);
+
+        model.addAttribute("greeting", greeting);
+
+        return "result";
+    }
+
+    @PostMapping("/post3")
+    public String processForm(@RequestParam("id") String id,
+                              @RequestParam("content") String content,
+                              @RequestParam("author") String author,
+                              Model model){
+
+        Greeting greeting = new Greeting();
+        greeting.setId(Integer.parseInt(id) + 1000);
+        greeting.setContent(author + " powiada przeto:\n" + content + " tak mu dopomóż Bóg");
+        greeting.setAuthor("mr. " + author);
 
         model.addAttribute("greeting", greeting);
 
