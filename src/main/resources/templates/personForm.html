@@ -16,6 +16,17 @@
             <td><input type="text" th:field="*{lastName}" /></td>
         </tr>
         <tr>
+            <td>
+                <select th:field="*{country}">
+                    <option th:value="'Poland'" th:text="'GLORIUOS UND POWERFUOL POLAN'"></option>
+                    <option th:value="'Germany'" th:text="'evul and nazi niemcy'"></option>
+                </select>
+            </td>
+        </tr>
+<!--        <select  id="country" name="country" th:field="*{countryList}" >-->
+<!--            <option th:each="country : ${countryList}" th:value="${country}" th:utext="${country}"/>-->
+<!--        </select>-->
+        <tr>
             <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
         </tr>
     </table>

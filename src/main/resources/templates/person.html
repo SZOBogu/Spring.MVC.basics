@@ -6,9 +6,9 @@
     <title>Person shown</title>
 </head>
 <body>
-    <p th:text="${person.name}"/> is your name <br>
-    And your last name is: <p th:text="${person.lastName}"/>
-
+    <b th:text="${person.name}"/> is your name<br>
+    And your last name is: <b th:text="${person.lastName}"/><br>
+    You come from: <b th:text="${person.country.toUpperCase()}"/><br>
     You shouldn't give your personal info away like that dude.
 </body>
 </html>
