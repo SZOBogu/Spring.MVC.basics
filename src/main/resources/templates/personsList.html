@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of persons</title>
+</head>
+<body>
+    <tr th:each="person: ${personList}">
+        <td th:text="${person.getName()}"></td><br>
+        <td th:text="${person.getLastName()}"></td><br>
+        <td th:text="${person.getCountry()}"></td>
+        <p>---------NEXT------------</p>
+    </tr>
+    <a href = "/">Go back to the home page</a>
+    <a href="/person/showForm">Go back to person form</a>
+</body>
+</html>

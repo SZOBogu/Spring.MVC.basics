@@ -11,6 +11,12 @@ public class Person {
         this.country ="";
     }
 
+    public Person(String name, String lastName, String country) {
+        this.name = name;
+        this.lastName = lastName;
+        this.country = country;
+    }
+
     public String getName() {
         return name;
     }
