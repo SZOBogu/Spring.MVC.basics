@@ -16,4 +16,6 @@ public class GreetingDatabase {
     public Greeting getGreeting(int index){
         return this.db.get(index);
     }
+
+    public void addGreeting(Greeting greeting){this.db.add(greeting);}
 }

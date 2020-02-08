@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,9 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/greeting")
 public class GreetingController {
 
+    private GreetingDatabase db;
+
+    private GreetingController(){
+        this.db = new GreetingDatabase();
+    }
+
     @GetMapping("/greeting")
-    public ModelAndView greetingForm(Model model) {
-        return new ModelAndView("greeting", "greeting", new Greeting());
+    public String greetingForm(@ModelAttribute Greeting greeting, Model model) {
+//        this.db.addGreeting(greeting);
+//        model.addAttribute("greetingList", this.db);
+        return "greeting";
     }
 
     @PostMapping("/post")
@@ -25,10 +32,10 @@ public class GreetingController {
             return "error";
         }
         greeting.setId(greeting.getId() + 1);
-        greeting.setContent("Ogłasza się co następuje:\n" + greeting.getContent() + " gitara bęc");
-        greeting.setAuthor(greeting.getAuthor().toUpperCase());
-
-        model.addAttribute("greeting", greeting);
+        greeting.setContent("\nOgłasza się co następuje:\n" + greeting.getContent() + " gitara bęc\n");
+        greeting.setAuthor(greeting.getAuthor().toUpperCase() + "\n");
+        this.db.addGreeting(greeting);
+        model.addAttribute("greetingList", this.db);
 
         return "result";
     }
@@ -60,7 +67,8 @@ public class GreetingController {
         greeting.setId(Integer.parseInt(id) + 1000);
         greeting.setContent(author + " powiada przeto:\n" + content + " tak mu dopomóż Bóg");
         greeting.setAuthor("mr. " + author);
-
+        this.db.addGreeting(greeting);
+        model.addAttribute("greetingList", this.db);
         model.addAttribute("greeting", greeting);
 
         return "result";
