@@ -5,7 +5,7 @@
     <title>List of persons</title>
 </head>
 <body>
-    <tr th:each="person: ${personList}">
+    <tr th:each="person: ${db.getDb()}">
         <td th:text="${person.getName()}"></td><br>
         <td th:text="${person.getLastName()}"></td><br>
         <td th:text="${person.getCountry()}"></td>

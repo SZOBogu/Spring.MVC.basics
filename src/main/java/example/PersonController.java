@@ -2,10 +2,7 @@ package example;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,10 +12,15 @@ import java.util.List;
 @RequestMapping("/person")
 public class PersonController {
 
-    @RequestMapping("/showForm")
-    public String showForm(Model model){
-        Person person = new Person();
-        model.addAttribute("person", person);
+    private PersonDatabase db;
+
+    public PersonController(){
+        this.db = new PersonDatabase();
+    }
+
+    @GetMapping("/showForm")
+    public String showForm(@ModelAttribute("person") Person person, Model model){
+       // model.addAttribute("person", person);
         return "personForm";
     }
 
@@ -27,17 +29,12 @@ public class PersonController {
         return "person";
     }
 
-    @GetMapping("/list")
-    public String getList(Model model){
-        Person person0 = new Person("Vladymyr","Romanov","Russia");
-        Person person1 = new Person("dasdasKas","Paparapapadopapulos","Greece");
-        Person person2 = new Person("Na","Palm","Vietnam");
-        Person person3 = new Person("Benjamin","Dover","USA");
-        Person person4 = new Person("Julio","Pinyeschet","Chile");
+    @RequestMapping("/list")
+    public String getList(@ModelAttribute("person") Person person, Model model){
 
-        List<Person> personList = Arrays.asList(person0, person1, person2, person3, person4);
-        model.addAttribute("personList", personList);
-
+        //person = new Person(name, lastName, country);
+        this.db.add(person);
+        model.addAttribute("db", this.db);
         return "personsList";
     }
 }

@@ -21,8 +21,6 @@ public class GreetingController {
 
     @GetMapping("/greeting")
     public String greetingForm(@ModelAttribute Greeting greeting, Model model) {
-//        this.db.addGreeting(greeting);
-//        model.addAttribute("greetingList", this.db);
         return "greeting";
     }
 
@@ -36,7 +34,7 @@ public class GreetingController {
         greeting.setAuthor(greeting.getAuthor().toUpperCase() + "\n");
         this.db.addGreeting(greeting);
         model.addAttribute("greetingList", this.db);
-
+        model.addAttribute("greeting", greeting);
         return "result";
     }
 
@@ -52,8 +50,9 @@ public class GreetingController {
         greeting.setContent(content);
         greeting.setAuthor(author);
 
+        this.db.addGreeting(greeting);
+        model.addAttribute("greetingList", this.db);
         model.addAttribute("greeting", greeting);
-
         return "result";
     }
 

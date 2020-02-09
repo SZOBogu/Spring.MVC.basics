@@ -5,7 +5,7 @@
     <title>Person form</title>
 </head>
 <body>
-<form action="#" th:action="@{/person/processForm}" th:object="${person}" method="post">
+<form action="#" th:action="@{/person/list}" th:object="${person}" method="post">
     <table>
         <tr>
             <td><label>Name</label></td>
@@ -23,15 +23,12 @@
                 </select>
             </td>
         </tr>
-<!--        <select  id="country" name="country" th:field="*{countryList}" >-->
-<!--            <option th:each="country : ${countryList}" th:value="${country}" th:utext="${country}"/>-->
-<!--        </select>-->
         <tr>
             <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
         </tr>
     </table>
     <a href="/"> Go back to home page</a>
-    <a href="/person/list"> See list of people i just made up! </a>
+    <a href="/person/list"> See list of people! </a>
 </form>
 </body>
 </html>
