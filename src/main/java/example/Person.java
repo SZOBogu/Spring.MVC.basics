@@ -1,15 +1,15 @@
 package example;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Person {
+    @NotNull
     private String name;
+
+    @NotNull
     private String lastName;
     private String country;
-
-    public Person(){
-        this.name = "";
-        this.lastName = "";
-        this.country ="";
-    }
 
     public Person(String name, String lastName, String country) {
         this.name = name;
