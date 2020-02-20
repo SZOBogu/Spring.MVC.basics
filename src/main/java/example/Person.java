@@ -5,11 +5,11 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Person {
-    @Size(min = 1, max=20)
+    @Size(min = 1, max=20, message = "1-20 characters")
     //@Pattern(regexp = "^[A-Z][a-z]$", message = "regep wyjebalo")
     private String name;
 
-    @Size(min = 1, max=20)
+    @Size(min = 1, max=20, message = "1-20 characters")
     private String lastName;
     private String country;
 
