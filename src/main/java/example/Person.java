@@ -1,13 +1,15 @@
 package example;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Person {
-    @NotNull
+    @Size(min = 1, max=20)
+    //@Pattern(regexp = "^[A-Z][a-z]$", message = "regep wyjebalo")
     private String name;
 
-    @NotNull
+    @Size(min = 1, max=20)
     private String lastName;
     private String country;
 
