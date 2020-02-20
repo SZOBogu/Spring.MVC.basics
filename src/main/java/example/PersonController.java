@@ -36,11 +36,11 @@ public class PersonController implements WebMvcConfigurer {
     @PostMapping("/processForm")
     public String processForm(@Valid @ModelAttribute("person") Person person, Model model, BindingResult bindingResult){
         if(bindingResult.hasErrors()) {
-            return "personForm";
+            return "error.html";
         }
         else{
             this.db.add(person);
-            return "error.html";
+            return "person";
         }
     }
 
