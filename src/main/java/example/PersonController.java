@@ -15,18 +15,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/person")
-@Validated
-public class PersonController implements WebMvcConfigurer {
+public class PersonController{
 
     private PersonDatabase db;
     public PersonController(){
         this.db = new PersonDatabase();
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/person").setViewName("person");
-    }
 
     @GetMapping("/showForm")
     public String showForm(@ModelAttribute("person") Person person, Model model){
@@ -34,9 +29,9 @@ public class PersonController implements WebMvcConfigurer {
     }
 
     @PostMapping("/processForm")
-    public String processForm(@Valid @ModelAttribute("person") Person person, Model model, BindingResult bindingResult){
+    public String processForm(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()) {
-            return "showForm";
+            return "personForm";
         }
         else{
             this.db.add(person);

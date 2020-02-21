@@ -11,17 +11,17 @@
         <tr>
             <td><label>ID</label></td>
             <td><input type="text" th:field="*{id}" /></td>
-            <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"> kurwaaaa </p>
+            <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
         </tr>
         <tr>
             <td><label>Content</label></td>
             <td><input type="text" th:field="*{content}" /></td>
-            <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"> kurwaaaa </p>
+            <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
         </tr>
         <tr>
             <td><label>Author</label></td>
             <td><input type="text" th:field="*{author}" /></td>
-            <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}"> kurwaaaa </p>
+            <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></p>
         </tr>
         <tr>
             <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
