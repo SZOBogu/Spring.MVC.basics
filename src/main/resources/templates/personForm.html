@@ -10,12 +10,12 @@
         <tr>
             <td><label>Name</label></td>
             <td><input type="text" th:field="*{name}" /></td>
-            <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> kurwaaaa </p>
         </tr>
         <tr>
             <td><label>Last Name - required</label></td>
             <td><input type="text" th:field="*{lastName}" /></td>
-            <p class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"> maaaaac </p>
         </tr>
         <tr>
             <td>

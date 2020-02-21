@@ -1,9 +1,16 @@
 package example;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Greeting {
 
+    @Min(2000)
     private long id;
+    @Size(min = 100)
     private String content;
+    @Size(min = 30)
     private String author;
 
     public long getId() {

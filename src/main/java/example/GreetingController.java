@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 
 @Controller
@@ -24,10 +26,10 @@ public class GreetingController {
         return "greeting";
     }
 
-    @PostMapping("/post")
-    public String processForm(@ModelAttribute Greeting greeting, BindingResult result, ModelMap model) {
+    @RequestMapping("/post")
+    public String processForm(@Valid @ModelAttribute Greeting greeting, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "error";
+            return "greeting";
         }
         greeting.setId(greeting.getId() + 1);
         greeting.setContent("\nOgłasza się co następuje:\n" + greeting.getContent() + " gitara bęc\n");
@@ -57,15 +59,12 @@ public class GreetingController {
     }
 
     @PostMapping("/post3")
-    public String processForm(@RequestParam("id") String id,
-                              @RequestParam("content") String content,
-                              @RequestParam("author") String author,
+    public String processForm(@Valid @ModelAttribute("greeting") Greeting greeting,
                               Model model){
 
-        Greeting greeting = new Greeting();
-        greeting.setId(Integer.parseInt(id) + 1000);
-        greeting.setContent(author + " powiada przeto:\n" + content + " tak mu dopomóż Bóg");
-        greeting.setAuthor("mr. " + author);
+        greeting.setId(greeting.getId() + 1000);
+        greeting.setContent(greeting.getAuthor() + " powiada przeto:\n" + greeting.getContent() + " tak mu dopomóż Bóg");
+        greeting.setAuthor("mr. " + greeting.getAuthor());
         this.db.addGreeting(greeting);
         model.addAttribute("greetingList", this.db);
         model.addAttribute("greeting", greeting);
