@@ -8,8 +8,11 @@
 <h1>Result</h1>
     <table th:each="greeting: ${greetingList.getDb()}">
         <tr th:text="${greeting.getId()}"></tr>
+        <br>
         <tr th:text="${greeting.getContent()}"></tr>
+        <br>
         <tr th:text="${greeting.getAuthor()}"></tr>
+        <br>
         <p>---------NEXT------------</p>
     </table>
 

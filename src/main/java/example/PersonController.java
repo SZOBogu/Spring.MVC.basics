@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/person")
-//@Validated
+@Validated
 public class PersonController implements WebMvcConfigurer {
 
     private PersonDatabase db;
@@ -36,7 +36,7 @@ public class PersonController implements WebMvcConfigurer {
     @PostMapping("/processForm")
     public String processForm(@Valid @ModelAttribute("person") Person person, Model model, BindingResult bindingResult){
         if(bindingResult.hasErrors()) {
-            return "error.html";
+            return "showForm";
         }
         else{
             this.db.add(person);
@@ -44,7 +44,7 @@ public class PersonController implements WebMvcConfigurer {
         }
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String getList(@ModelAttribute("person") Person person, Model model){
         model.addAttribute("db", this.db);
         return "personsList";
