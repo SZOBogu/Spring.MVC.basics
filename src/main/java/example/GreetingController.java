@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +41,7 @@ public class GreetingController {
 
     @PostMapping("/post2")
     public String processForm(HttpServletRequest request, Model model){
-        long id = Long.parseLong(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String content = request.getParameter("content") + " pis joł";
         String author = request.getParameter("author").toUpperCase();
 

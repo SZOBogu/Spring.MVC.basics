@@ -1,23 +1,24 @@
 package example;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class Greeting {
 
-    @Min(2000)
-    private long id;
-    @Size(min = 100)
+    @Min(value = 0, message = "You must enter 0 or more in id field")
+    private int id;
+    @Size(min = 3, message = "Min 3 character content")
     private String content;
-    @Size(min = 30)
+    @Size(max = 30, message = "Author name cannot be longer than 30 characters")
     private String author;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

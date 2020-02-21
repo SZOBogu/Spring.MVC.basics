@@ -1,18 +1,14 @@
 package example;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 public class Person {
-    //@Size(min = 1, max=20, message = "1-20 characters")
-    //@Pattern(regexp = "^[A-Z][a-z]$", message = "regep wyjebalo")
-    @NotEmpty
+    @Pattern(regexp = "\\w*", message = "Only alphanumeric characters acceptable")
+    @NotEmpty(message = "You must enter name")
     private String name;
 
-    //@Size(min = 1, max=20, message = "1-20 characters")
-    @NotEmpty
+    @NotEmpty(message = "You must enter last name")
     private String lastName;
     private String country;
 
