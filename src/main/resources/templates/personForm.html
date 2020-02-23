@@ -26,6 +26,11 @@
             </td>
         </tr>
         <tr>
+                <td><label>Please write "Marian Kowalski is most handsome guy on earth"</label></td>
+                <td><input type="text" th:field="*{someTest}" /></td>
+                <p th:if="${#fields.hasErrors('someTest')}" th:errors="*{someTest}"></p>
+        </tr>
+        <tr>
             <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
         </tr>
     </table>
