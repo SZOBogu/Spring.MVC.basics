@@ -10,11 +10,11 @@ public class CustomValidationAnnotationConstraintValidator
 
     @Override
     public void initialize(CustomValidationAnnotation constraintAnnotation) {
-        this.someData = constraintAnnotation.value();
+       // this.someData = constraintAnnotation.value();
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return this.someData.equals("Marian Kowalski is most handsome guy on earth");
+        return value.equals("Marian Kowalski is most handsome guy on earth");
     }
 }
